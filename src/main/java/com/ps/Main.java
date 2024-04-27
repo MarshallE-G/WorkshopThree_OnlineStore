@@ -1,7 +1,11 @@
 package com.ps;
 
+
 public class Main {
     public static void main(String[] args) {
+        Inventory myStore = new Inventory();
+        //INITIALIZES ARRAYLIST AND HASHMAP CLASS
+
         // Store Home Screen
             // Option 1: Display Products
             // Option 2: Display Cart

@@ -1,13 +1,13 @@
 package com.ps;
 
-public class Products {
+public class Product {
     private String sku;
     private String product_name;
     private float price;
     private String department;
     private static int total_num_products;
 
-    public Products(String sku, String product_name, float price, String department){
+    public Product(String sku, String product_name, float price, String department){
         this.sku = sku;
         this.product_name = product_name;
         this.price = price;
