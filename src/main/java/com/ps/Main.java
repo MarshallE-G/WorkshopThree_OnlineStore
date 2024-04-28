@@ -50,9 +50,18 @@ public class Main {
     }
 
     private static void inputData(String fileName, Inventory myStore){
-        try(BufferedReader bufReader = new BufferedReader(new FileReader("products.txt"))){
-
-        } catch(IOException e){
+        try (BufferedReader bufReader = new BufferedReader(new FileReader("products.txt"))) {
+            String line;
+            while ((line = bufReader.readLine()) != null) {
+                String[] parts = line.split(",");
+                String sku = (parts[0]);
+                String productName = parts[1];
+                String department = parts[2];
+                float price = Float.parseFloat(parts[3]);
+                Product product = new Product(sku, productName, price, department);
+                myStore.addProduct(product);
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

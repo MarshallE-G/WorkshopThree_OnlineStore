@@ -56,7 +56,6 @@ public class Inventory {
         shoppingCart.remove(product);
     }
 
-    //buffered reader will add values to instances of the above data structures.
     /*methods that print inventory, shopping cart and searching here will be called from
     the main class */
 
