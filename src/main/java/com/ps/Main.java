@@ -1,5 +1,9 @@
 package com.ps;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +33,14 @@ public class Main {
 
 
 
+    }
+
+    private static void inputData(String fileName, Inventory myStore){
+        try(BufferedReader bufReader = new BufferedReader(new FileReader("products.txt"))){
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     // Display Products Screen STATIC method
