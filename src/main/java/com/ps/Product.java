@@ -18,7 +18,6 @@ public class Product {
     public String getDepartment() {
         return department;
     }
-
     public void setDepartment(String department) {
         this.department = department;
     }
@@ -26,7 +25,6 @@ public class Product {
     public float getPrice() {
         return price;
     }
-
     public void setPrice(float price) {
         this.price = price;
     }
@@ -34,7 +32,6 @@ public class Product {
     public String getProduct_name() {
         return product_name;
     }
-
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
     }
@@ -42,7 +39,6 @@ public class Product {
     public String getSku() {
         return sku;
     }
-
     public void setSku(String sku) {
         this.sku = sku;
     }
@@ -51,4 +47,13 @@ public class Product {
         return total_num_products;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "sku='" + sku + '\'' +
+                ", product_name='" + product_name + '\'' +
+                ", price=" + price +
+                ", department='" + department + '\'' +
+                '}';
+    }
 }
