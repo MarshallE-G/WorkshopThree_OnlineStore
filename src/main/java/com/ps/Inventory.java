@@ -75,8 +75,8 @@ public class Inventory {
     }
 
     // Adds products/items to user's shopping cart
-    public void addToShoppingCart(Product product){
-        shoppingCart.add(product);
+    public void addToShoppingCart(String productSKU){
+        shoppingCart.add(productSearcher.get(productSKU));
     }
 
     // Removes items/products from user's shopping cart

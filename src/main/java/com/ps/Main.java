@@ -40,6 +40,8 @@ public class Main {
                     break;
                 case "2":
 
+                    Main.cartMenu();
+
                     break;
                 case "3":
                     break;
@@ -133,9 +135,13 @@ public class Main {
 
                     break;
                 case "2": // Add items to shopping cart
+                    String productSKU;
 
+                    System.out.println("What item would you like to add to your shopping cart?");
 
+                    productSKU = scanner.next();
 
+                    myStore.addToShoppingCart(productSKU);
                     break;
                 case "3": // Go back
                     break;
@@ -156,6 +162,8 @@ public class Main {
             // Display Cart Screen
             System.out.println("Shopping Cart Menu\n");
             // Display items in user's cart
+
+            myStore.displayShoppingCart();
 
             // -----> For-each loop
 
