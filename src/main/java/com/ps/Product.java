@@ -1,8 +1,8 @@
 package com.ps;
 
 public class Product {
-    private String sku;
-    private String product_name;
+    private Sname;tring sku;
+    private String product_
     private float price;
     private String department;
     private static int total_num_products;

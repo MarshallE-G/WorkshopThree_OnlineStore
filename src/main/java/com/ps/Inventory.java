@@ -80,8 +80,8 @@ public class Inventory {
     }
 
     // Removes items/products from user's shopping cart
-    public void removeFromShoppingCart(Product product){
-        shoppingCart.remove(product);
+    public void removeFromShoppingCart(String productSKU){
+        shoppingCart.remove(productSearcher.get(productSKU));
     }
 
 

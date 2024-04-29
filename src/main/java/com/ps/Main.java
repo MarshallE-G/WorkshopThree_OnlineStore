@@ -181,12 +181,16 @@ public class Main {
             cartMenuSelection = scanner.nextLine(); // May have to change this to ".next()" if whitespace issue occurs.
 
             switch (cartMenuSelection) {
+
                 case "1": // Check Out cart
                     myStore.displayShoppingCart();
 
                     break;
                 case "2": // Remove product
                     // Specify which product to remove
+                    System.out.println("Please enter the sku of the product you want to remove from cart");
+                    String sku_input = scanner.next();
+                    myStore.removeFromShoppingCart(sku_input);
 
                     break;
                 case "3": // Go back
