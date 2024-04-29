@@ -182,6 +182,8 @@ public class Main {
 
             switch (cartMenuSelection) {
                 case "1": // Check Out cart
+                    myStore.displayShoppingCart();
+
                     break;
                 case "2": // Remove product
                     // Specify which product to remove

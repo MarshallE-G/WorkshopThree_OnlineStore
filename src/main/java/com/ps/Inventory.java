@@ -84,6 +84,7 @@ public class Inventory {
         shoppingCart.remove(product);
     }
 
+
     /*methods that print inventory, shopping cart and searching here will be called from
     the main class */
 
