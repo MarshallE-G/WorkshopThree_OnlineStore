@@ -27,9 +27,37 @@ public class Inventory {
 
      */
 
-    // Adds products/items to product inventory ArrayList
+    // Searches a product by its price
+    public void searchByPrice(float price) {
+        for (Product product : productInventory) {
+            if (product.getPrice() == price) {
+                System.out.println(product);
+            }
+        }
+    }
+
+    // Searches a product by its department
+    public void searchByDepartment(String department) {
+        for (Product product : productInventory) {
+            if (product.getDepartment().equalsIgnoreCase(department)) {
+                System.out.println(product);
+            }
+        }
+    }
+
+    // Searches a product by its name
+    public void searchByName(String name) {
+        for (Product product : productInventory) {
+            if (product.getDepartment().equalsIgnoreCase(name)) {
+                System.out.println(product);
+            }
+        }
+    }
+
+    // Adds products/items to product inventory ArrayList and HashMap
     public void addProduct(Product product){
         productInventory.add(product);
+        productSearcher.put(product.getSku(), product); // SKU is key, product is value.
     }
 
     // Displays all products to screen/user

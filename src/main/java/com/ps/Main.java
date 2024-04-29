@@ -9,13 +9,14 @@ import java.util.Scanner;
 
 public class Main {
     // Had to make this into a global static variable in order to use it in the static methods for the screens.
-    public static Inventory myStore = new Inventory();
+    private static Inventory myStore = new Inventory();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
         //INITIALIZES ARRAYLIST AND HASHMAP CLASS
+
+        inputData("", myStore); // The fileName argument is currently unused
 
         String menuSelection;
         do {
@@ -34,6 +35,8 @@ public class Main {
             switch (menuSelection) {
                 case "1":
 
+                    Main.productsMenu();
+
                     break;
                 case "2":
 
@@ -49,15 +52,16 @@ public class Main {
         scanner.close();
     }
 
+    // The fileName parameter is currently unused
     private static void inputData(String fileName, Inventory myStore){
         try (BufferedReader bufReader = new BufferedReader(new FileReader("products.txt"))) {
             String line;
             while ((line = bufReader.readLine()) != null) {
-                String[] parts = line.split(",");
-                String sku = (parts[0]);
+                String[] parts = line.split("\\|");
+                String sku = parts[0];
                 String productName = parts[1];
-                String department = parts[2];
-                float price = Float.parseFloat(parts[3]);
+                float price = Float.parseFloat(parts[2]);
+                String department = parts[3];
                 Product product = new Product(sku, productName, price, department);
                 myStore.addProduct(product);
             }
@@ -67,62 +71,67 @@ public class Main {
     }
 
     // Display Products Screen STATIC method
-    public static void productsMenu() {
+    private static void productsMenu() {
         Scanner scanner = new Scanner(System.in);
 
         String productsMenuSelection;
         do {
             // Display Products Screen
-            System.out.println("Products Menu");
+            System.out.println("Products Menu\n");
             // Display all items in store
 
             // -----> For-each loop
+            myStore.displayAllProducts();
 
             // Option 1: Search or Filter
             System.out.println("\tEnter 1 to Search for an item"); // Search feature
-            System.out.println("\tEnter 2 to Filter products"); // Filter feature
             // Option 2: Add to cart
-            System.out.println("\tEnter 3 to add item to shopping cart");
+            System.out.println("\tEnter 2 to add item to shopping cart");
             // Option 3: Go back
-            System.out.println("\tEnter 4 to GO BACK to Home menu\n");
+            System.out.println("\tEnter 3 to GO BACK to Home menu\n");
             System.out.println("Enter here:");
-            productsMenuSelection = scanner.nextLine(); // May have to change this to ".next()" if whitespace issue occurs.
+            productsMenuSelection = scanner.next(); // May have to change this to ".next()" if whitespace issue occurs.
 
             switch (productsMenuSelection) {
                 case "1": // Search feature
-                    String searchSKU;
+                    float searchPrice;
+                    String searchProductName;
+                    String searchDept;
 
-                    System.out.println("\tTo Search for a product, please enter it's SKU code");
-                    searchSKU = scanner.nextLine(); // May have to change this to ".next()" if whitespace issue occurs.
+                    System.out.println("Would you like to search by... ");
+                    System.out.println("\tPrice (enter 1)");
+                    System.out.println("\tDepartment (enter 2)");
+                    System.out.println("\tProduct name (enter 3)");
+
+                    System.out.println("To Search for a product, please enter it's price");
+                    searchPrice = scanner.nextFloat(); // May have to change this to ".next()" if whitespace issue occurs.
 
                     // Have to use the Search methods from the Inventory class.
+                    System.out.println();
+                    myStore.searchByPrice(searchPrice);
 
                     break;
-                case "2":           // I'm kind of confused on if the "search or filter" option are the exact same thing.
-                    String filterDept;
-
-                    // Will be similar to case "1" (the search option).
-                    break;
-                case "3": // Add items to shopping cart
+                case "2": // Add items to shopping cart
 
                     break;
-                case "4": // Go back
+                case "3": // Go back
                     break;
                 default:
                     System.out.println("\nERROR: You must type 1, 2, or 3.\n");
+                    break;
             }
 
         } while (!productsMenuSelection.equals("4"));
     }
 
     // Display Cart Screen STATIC method
-    public static void cartMenu() {
+    private static void cartMenu() {
         Scanner scanner = new Scanner(System.in);
 
         String cartMenuSelection;
         do {
             // Display Cart Screen
-            System.out.println("Shopping Cart Menu");
+            System.out.println("Shopping Cart Menu\n");
             // Display items in user's cart
 
             // -----> For-each loop
