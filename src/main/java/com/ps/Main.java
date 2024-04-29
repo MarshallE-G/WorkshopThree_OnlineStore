@@ -64,6 +64,7 @@ public class Main {
                 String department = parts[3];
                 Product product = new Product(sku, productName, price, department);
                 myStore.addProduct(product);
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,24 +95,46 @@ public class Main {
 
             switch (productsMenuSelection) {
                 case "1": // Search feature
+                    String searchSelection;
                     float searchPrice;
                     String searchProductName;
                     String searchDept;
 
-                    System.out.println("Would you like to search by... ");
-                    System.out.println("\tPrice (enter 1)");
-                    System.out.println("\tDepartment (enter 2)");
-                    System.out.println("\tProduct name (enter 3)");
+                    System.out.println("\tWould you like to search by... ");
+                    System.out.println("\t\tPrice (enter 1)");
+                    System.out.println("\t\tDepartment (enter 2)");
+                    System.out.println("\t\tProduct name (enter 3)\n");
+                    System.out.println("Enter here: ");
+                    searchSelection = scanner.next();
 
-                    System.out.println("To Search for a product, please enter it's price");
-                    searchPrice = scanner.nextFloat(); // May have to change this to ".next()" if whitespace issue occurs.
+                    if (searchSelection.equals("1")) { // Search by price
+                        System.out.println("To Search for a product, please enter it's price");
+                        searchPrice = scanner.nextFloat();
 
-                    // Have to use the Search methods from the Inventory class.
-                    System.out.println();
-                    myStore.searchByPrice(searchPrice);
+                        System.out.println();
+                        myStore.searchByPrice(searchPrice);
+                    } else if (searchSelection.equals("2")) { // Search by department
+                        System.out.println("To Search for a product, please enter it's department");
+                        searchPrice = scanner.nextFloat();
+
+                        System.out.println();
+                        myStore.searchByPrice(searchPrice);
+                    } else if (searchSelection.equals("3")) { // Search by product name
+                        System.out.println("To Search for a product, please enter it's name");
+                        searchPrice = scanner.nextFloat();
+
+                        System.out.println();
+                        myStore.searchByPrice(searchPrice);
+                    } else {
+                        System.out.println("\nERROR: You must type 1, 2, or 3.\n");
+                    }
+
+
 
                     break;
                 case "2": // Add items to shopping cart
+
+
 
                     break;
                 case "3": // Go back
@@ -121,7 +144,7 @@ public class Main {
                     break;
             }
 
-        } while (!productsMenuSelection.equals("4"));
+        } while (!productsMenuSelection.equals("3"));
     }
 
     // Display Cart Screen STATIC method
